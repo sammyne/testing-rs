@@ -3,8 +3,10 @@ name: rsgx
 on:
   push:
     branches: [ 'rsgx**' ]
+    paths: ["benches", "examples", "src", "tests"]
   pull_request:
     branches: [ 'rsgx**' ]
+    paths: ["benches", "examples", "src", "tests"]
 
 jobs:
   test:
