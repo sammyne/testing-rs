@@ -7,7 +7,7 @@ enclave {
     trusted {
         /* define ECALLs here. */
 
-        public void ecall_do_rsgx_test();
+        public uint64_t ecall_do_rsgx_tests();
     };
 
     untrusted {};

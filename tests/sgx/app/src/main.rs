@@ -5,7 +5,7 @@ use sgx_types::*;
 use sgx_urts::SgxEnclave;
 
 extern "C" {
-    fn ecall_do_rsgx_test(eid: sgx_enclave_id_t) -> sgx_status_t;
+    fn ecall_do_rsgx_tests(eid: sgx_enclave_id_t, failures: *mut u64) -> sgx_status_t;
 }
 
 fn new_enclave(enclave_path: &str) -> SgxResult<SgxEnclave> {
@@ -54,11 +54,14 @@ fn main() {
         }
     };
 
-    let status = unsafe { ecall_do_rsgx_test(enclave.geteid()) };
+    let mut failures = 0u64;
+    let status = unsafe { ecall_do_rsgx_tests(enclave.geteid(), &mut failures) };
     match status {
         sgx_status_t::SGX_SUCCESS => {}
         _ => panic!("[-] ecall_do_rsgx_test failed: {:?}!", status),
     }
+
+    assert_eq!(failures, 3, "testing got {} failed cases", failures);
 
     enclave.destroy();
 }
