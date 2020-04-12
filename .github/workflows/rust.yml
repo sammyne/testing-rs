@@ -3,9 +3,11 @@ name: rust
 on:
   push:
     branches-ignore: [ 'rsgx**' ]
+    paths: ["benches", "examples", "src", "tests"]
   pull_request:
     # simply use 'branches' with ['!rsgx**'] isn't ok due to missing positive matches
     branches-ignore: [ 'rsgx**' ]
+    paths: ["benches", "examples", "src", "tests"]
 
 jobs:
   test:
