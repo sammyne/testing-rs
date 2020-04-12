@@ -13,6 +13,14 @@ source = "registry+https://github.com/rust-lang/crates.io-index"
 checksum = "95e28fa049fda1c330bcf9d723be7663a899c4679724b34c81e9f5a326aab8cd"
 
 [[package]]
+name = "enclave"
+version = "1.0.0"
+dependencies = [
+ "sgx_tstd",
+ "testing",
+]
+
+[[package]]
 name = "hashbrown_tstd"
 version = "0.7.1"
 source = "git+https://github.com/apache/teaclave-sgx-sdk?rev=v1.1.1#66aaa2888992c63137e87adc688ddedab1181056"

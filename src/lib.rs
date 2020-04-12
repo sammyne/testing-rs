@@ -1,3 +1,7 @@
+#![no_std]
+
+extern crate sgx_tstd as std;
+
 #[macro_export]
 macro_rules! should_panic {
     ($fmt:expr) => {{
@@ -36,3 +40,6 @@ macro_rules! should_panic {
         }
     }};
 }
+
+#[cfg(feature = "testing")]
+pub mod tests;
