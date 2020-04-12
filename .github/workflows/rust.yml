@@ -2,9 +2,10 @@ name: rust
 
 on:
   push:
-    branches: [ '!rsgx**' ]
+    branches-ignore: [ 'rsgx**' ]
   pull_request:
-    branches: [ '!rsgx**' ]
+    # simply use 'branches' with ['!rsgx**'] isn't ok due to missing positive matches
+    branches-ignore: [ 'rsgx**' ]
 
 jobs:
   test:
