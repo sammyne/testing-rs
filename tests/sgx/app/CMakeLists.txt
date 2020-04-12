@@ -19,9 +19,7 @@ add_custom_target(format-${app}
 # since the failed tests won't exit with non-zero status code
 # we need to handle that by filtering the 'FAILED' keyword from the output
 add_custom_target(test-sgx
-    COMMAND ${appBin} ${PROJECT_BINARY_DIR}/enclave/${enclaveLib} > test.log
-    COMMAND cat test.log
-    COMMAND if $(tail -1 test.log | grep 'FAILED') \; then exit 1\; fi\;
+    COMMAND ${appBin} ${PROJECT_BINARY_DIR}/enclave/${enclaveLib}
     DEPENDS ${app} ${enclave}
     WORKING_DIRECTORY ${CMAKE_CURRENT_BINARY_DIR}
 )
